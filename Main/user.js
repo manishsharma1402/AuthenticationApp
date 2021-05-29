@@ -5,7 +5,6 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var User = require('../models/user');
 
-/* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
@@ -25,7 +24,7 @@ router.post('/register', function(req,res,next){
 		password = req.body.password,
 		password2 = req.body.password2;
 	
-	//check for image fields
+	
 	if(req.files && req.files.profileimage){
 		console.log('Uploading File...');
 		var profileImageName = req.files.profileimage.originalname;
@@ -38,8 +37,7 @@ router.post('/register', function(req,res,next){
 	else{
 		var profileImageServer = "noimage.png";
 	}
-	
-	// Validator
+
 	req.checkBody('name', 'Name Field is required').notEmpty();
 	req.checkBody('email', 'Email Field is required').notEmpty();
 	req.checkBody('email', 'Email not Valid').isEmail();
@@ -47,7 +45,7 @@ router.post('/register', function(req,res,next){
 	req.checkBody('password', 'Password Field is required').notEmpty();
 	req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
 	
-	// errors
+	
 	var errors = req.validationErrors();
 	
 	if(errors){
