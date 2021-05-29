@@ -2,6 +2,6 @@
 This is a Authentication Application source code.
 
 ## Features:
-- Login App
-- Authentication 
-- used Bootstrap 
+[x] Login App
+[x] Authentication 
+[x] used Bootstrap 
